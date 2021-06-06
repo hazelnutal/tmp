@@ -9,7 +9,10 @@ const config = {
         waitForConnections: true,
         queueLimit: 0,
         debug: false,
-    }
+    },
+    jwt: {
+        secret: env.JWT_SECRET,
+    },
 };
   
 export { config };

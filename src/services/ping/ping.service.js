@@ -1,7 +1,7 @@
-const getPingStatus = async () => {
+const getPingStatus = async (req, res) => {
     try {
         return new Promise((resolve, reject) => {
-            resolve({ status: "OK" });
+            resolve(res.status(200).json({ message: 'OK' }));
         });
     } catch(e) {
         throw new Error(e.message)

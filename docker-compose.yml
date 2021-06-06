@@ -9,9 +9,17 @@ services:
     image: mysql
     restart: always
     env_file: ./.env
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+      - ./mysql-init-files:/docker-entrypoint-initdb.d
     environment:
-      MYSQL_ROOT_PASSWORD: $DB_PASSWORD
-      MYSQL_DATABASE: $DB_DATABASE
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_ROOT_PASSWORD=$DB_PASSWORD
+      - MYSQL_DATABASE=$DB_DATABASE
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
     ports:
       - 3306:3306
     networks:
@@ -22,7 +30,8 @@ services:
     ports: 
       - 3000:3000
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
     networks:
       - api-mysql-bridge
 
