@@ -1,0 +1,29 @@
+version: '3'
+
+networks:
+  api-mysql-bridge:
+    driver: bridge
+
+services: 
+  mysql:
+    image: mysql
+    restart: always
+    env_file: ./.env
+    environment:
+      MYSQL_ROOT_PASSWORD: $DB_PASSWORD
+      MYSQL_DATABASE: $DB_DATABASE
+    ports:
+      - 3306:3306
+    networks:
+      - api-mysql-bridge
+  app:
+    build: .
+    image: api
+    ports: 
+      - 3000:3000
+    depends_on:
+      - mysql
+    networks:
+      - api-mysql-bridge
+
+  
