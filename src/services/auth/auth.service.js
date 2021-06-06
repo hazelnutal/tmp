@@ -32,7 +32,7 @@ const login = async (req, res) => {
     return res.status(200).send({
         id: user.id,
         username: user.user_name,
-        accessToken: token
+        accessToken: token,
     });
 }
 
