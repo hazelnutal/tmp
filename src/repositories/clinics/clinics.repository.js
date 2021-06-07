@@ -4,8 +4,8 @@ const createClinic = async (clinicName) => {
     await databaseService.query(`INSERT INTO clinics SET clinic_name = ?`, [clinicName]);
 };
 
-const getListOfClinics = async (filters) => {
-    const clinics = await databaseService.query(`
+const getListOfClinics = async () => {
+    let clinics = await databaseService.query(`
     SELECT c.id as clinic_id, c.clinic_name
     FROM clinics c
     JOIN clinics_doctors cd
