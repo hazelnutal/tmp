@@ -21,3 +21,5 @@ npm run migrations-up
 Postman
 
 <3
+
+! полученный на этапе логина токен закинуть в хедер x-access-token
