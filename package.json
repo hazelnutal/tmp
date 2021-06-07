@@ -8,7 +8,11 @@
     "clean": "rm -rf build && mkdir build",
     "build-babel": "babel ./src --out-dir ./build --source-maps --copy-files",
     "start": "npm run build && node --require dotenv/config ./build/app.js",
-    "start:dev": "nodemon --require dotenv/config --exec babel-node ./src/app.js"
+    "start:dev": "nodemon --require dotenv/config --exec babel-node ./src/app.js",
+    "create-migration": "node src/executable/migrations.js add migration $npm_config_name",
+    "create-seed": "node src/executable/migrations.js add seed $npm_config_name",
+    "migrations-up": "node src/executable/migrations.js up",
+    "migrations-down": "node src/executable/migrations.js down"
   },
   "repository": {
     "type": "git",

@@ -41,7 +41,7 @@ const register = async (req, res) => {
 
     const user = await usersRepository.getUserByUserName(reqUserName);
     if (user) {
-        return res.status(401).send({
+        return res.status(401).json({
             message: `User with name ${reqUserName} already exists.`,
         });
     }
@@ -50,7 +50,7 @@ const register = async (req, res) => {
 
     await usersRepository.createUser(reqUserName, userEncryptedPassword);
 
-    return res.status(200).send({ message: 'User was registered successfully!' });
+    return res.status(200).json({ message: 'User was registered successfully!' });
 }
 
 export {

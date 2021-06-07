@@ -4,9 +4,8 @@ const createClinic = async (req, res) => {
     const reqClinicName = req.body.clinic_name;
 
     const clinic = await clinicsRepository.getClinicByClinicName(reqClinicName);
-
     if (clinic) {
-        return res.status(401).send({
+        return res.status(401).json({
             message: `Clinic with name ${reqClinicName} already exists.`,
         });
     }
