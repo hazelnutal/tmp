@@ -2,10 +2,10 @@ cp .env.example .env
 
 .env:
 
-DB_HOST=mysql
-DB_USER=root
-DB_PASSWORD=root
-DB_DATABASE=test
+DB_HOST=mysql</br>
+DB_USER=root</br>
+DB_PASSWORD=root</br>
+DB_DATABASE=test</br>
 
 DB_MIGRATION_HOST=localhost
 
